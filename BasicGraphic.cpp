@@ -174,3 +174,88 @@ void BasicGraphic::MID_Line(CDC* &pDC,CPoint startPoint,CPoint endPoint,COLORREF
 		}
 	}
 }
+
+// 直线的 Bresenham 算法函数
+void BasicGraphic::BRESENHAM_Line(CDC *&pDC,CPoint startPoint,CPoint endPoint,COLORREF &color){
+	if(endPoint.x!=startPoint.x && endPoint.y!=startPoint.y){  // 非特殊位置直线，一般直线
+		int kFlag =0;  //  0：斜率<=1 , 1:斜率>1
+		int sFlag = 1;  // 斜率正负的标识
+		// 首先判断两个端点，通过交换使起点小于终点
+		if(startPoint.x > endPoint.x){
+			CPoint pt = startPoint;
+			startPoint = endPoint;
+			endPoint = pt;
+		}
+		if(abs(endPoint.y-startPoint.y) > abs(endPoint.x-startPoint.x))
+			kFlag = 1;   // 斜率绝对值 > 1
+		if(startPoint.y > endPoint.y)
+			sFlag = -1;  // 斜率 < 0 的标志
+		if(sFlag == -1)  // 关于x轴翻转，从而都转入第一象限
+			endPoint.y=startPoint.y+(startPoint.y-endPoint.y);
+		int x,y,dx,dy,p;
+		dx = endPoint.x-startPoint.x;
+		dy = endPoint.y-startPoint.y;
+		x = startPoint.x;
+		y = startPoint.y;
+		pDC->SetPixel(x,y,color);
+		if(kFlag==0){  // 斜率<=1  沿x方向行进
+			p = 2*dy-dx;  // 判别式初始值
+			for(int i=0;i<(endPoint.x-startPoint.x);i++){
+				if(p<=0){
+					pDC->SetPixel(x+1,y,color);  // 取点(x+1,y)
+					x+=1;
+					p+=2*dy;
+				}
+				else{
+					pDC->SetPixel(x+1,y+sFlag,color);  // 取点(x+1,y+1)
+					x+=1;
+					y+=sFlag;
+					p+=2*dy-2*dx;
+				}
+			}
+		}
+		else{  // 斜率>1  沿y方向行进
+			p = 2*dx-dy;
+			for(int i=0;i<(endPoint.y-startPoint.y);i++){
+				if(p<=0){
+					pDC->SetPixel(x,y+sFlag,color);  // 取点(x,y+1)
+					y+=sFlag;
+					p+=2*dx;
+				}
+				else{
+					pDC->SetPixel(x+1,y+sFlag,color);  // 取点(x+1,y+1)
+					y+=sFlag;
+					x+=1;
+					p+=2*dx-2*dy;
+				}
+			}
+		}
+	}
+	else if(startPoint.x == endPoint.x){  // 竖直线
+		if(startPoint.y<endPoint.y){
+			for(int i=startPoint.y;i<=endPoint.y;i++){
+				pDC->SetPixel(startPoint.x,i,color);
+			}
+		}
+		else{
+			for(int i=startPoint.y;i>=endPoint.y;i--){
+				pDC->SetPixel(startPoint.x,i,color);
+			}
+		}
+	}
+	else{  // 水平线
+		if(startPoint.x<endPoint.x){
+			for(int i=startPoint.x;i<=endPoint.x;i++){
+				pDC->SetPixel(i,startPoint.y,color);
+			}
+		}
+		else{
+			for(int i=startPoint.x;i>=endPoint.x;i--){
+				pDC->SetPixel(i,startPoint.y,color);
+			}
+		}
+	}
+}
+/* Bresenham 算法与中点算法相似，都通过判别式来确定，
+在一个方向还是两个方向同时递增，同时根据递增方向确定判别式的递增量。
+两种算法的区别在于判别式的不同。 */

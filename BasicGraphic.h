@@ -2,6 +2,9 @@
 //
 //////////////////////////////////////////////////////////////////////
 
+#ifndef BasicGraphic_
+#define BasicGraphic_
+
 #if !defined(AFX_BASICGRAPHIC_H__FC4EAFC1_C51C_40DE_A71A_044BCF2B162B__INCLUDED_)
 #define AFX_BASICGRAPHIC_H__FC4EAFC1_C51C_40DE_A71A_044BCF2B162B__INCLUDED_
 
@@ -19,6 +22,9 @@ public:
 	static void DDA_Line(CDC* &pDC,CPoint &startPoint,CPoint &endPoint,COLORREF &color);
 	// 直线的中点画线算法函数
 	static void MID_Line(CDC* &pDC,CPoint startPoint,CPoint endPoint,COLORREF &color);
+	// 直线的 Bresenham 算法函数
+	static void BRESENHAM_Line(CDC *&pDC,CPoint startPoint,CPoint endPoint,COLORREF &color);
 };
 
 #endif // !defined(AFX_BASICGRAPHIC_H__FC4EAFC1_C51C_40DE_A71A_044BCF2B162B__INCLUDED_)
+#endif // BasicGraphic_

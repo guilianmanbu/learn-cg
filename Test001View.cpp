@@ -86,7 +86,7 @@ void CTest001View::OnDraw(CDC* pDC)
 			startPoint = this->m_pt_array[i];
 		if(i>0){
 			endPoint = this->m_pt_array[i];
-			BasicGraphic::MID_Line(pDC,startPoint,endPoint,this->m_point_color);
+			BasicGraphic::BRESENHAM_Line(pDC,startPoint,endPoint,this->m_point_color);
 			startPoint = endPoint;
 		}
 	}
