@@ -41,5 +41,5 @@
 Debug/
 *.plg
 *.ncb
-*.opt
+# *.opt
 *.aps
