@@ -39,3 +39,7 @@
 
 # Custom
 Debug/
+*.plg
+*.ncb
+*.opt
+*.aps

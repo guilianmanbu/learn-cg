@@ -6,32 +6,6 @@
 --------------------Configuration: Test001 - Win32 Debug--------------------
 </h3>
 <h3>Command Lines</h3>
-Creating temporary file "C:\Users\NGQ\AppData\Local\Temp\RSP9A24.tmp" with contents
-[
-/nologo /MDd /W3 /Gm /GX /ZI /Od /D "WIN32" /D "_DEBUG" /D "_WINDOWS" /D "_AFXDLL" /D "_MBCS" /FR"Debug/" /Fp"Debug/Test001.pch" /Yu"stdafx.h" /Fo"Debug/" /Fd"Debug/" /FD /GZ /c 
-"E:\CWORKSPACE\CPP\Test001\Test001View.cpp"
-]
-Creating command line "cl.exe @C:\Users\NGQ\AppData\Local\Temp\RSP9A24.tmp" 
-Creating temporary file "C:\Users\NGQ\AppData\Local\Temp\RSP9A25.tmp" with contents
-[
-/nologo /subsystem:windows /incremental:yes /pdb:"Debug/Test001.pdb" /debug /machine:I386 /out:"Debug/Test001.exe" /pdbtype:sept 
-.\Debug\MainFrm.obj
-.\Debug\StdAfx.obj
-.\Debug\Test001.obj
-.\Debug\Test001Doc.obj
-.\Debug\Test001View.obj
-.\Debug\Test001.res
-.\Debug\MDlg.obj
-.\Debug\BasicGraphic.obj
-]
-Creating command line "link.exe @C:\Users\NGQ\AppData\Local\Temp\RSP9A25.tmp"
-<h3>Output Window</h3>
-Compiling...
-Test001View.cpp
-Linking...
-Creating command line "bscmake.exe /nologo /o"Debug/Test001.bsc"  .\Debug\StdAfx.sbr .\Debug\MainFrm.sbr .\Debug\Test001.sbr .\Debug\Test001Doc.sbr .\Debug\Test001View.sbr .\Debug\MDlg.sbr .\Debug\BasicGraphic.sbr"
-Creating browse info file...
-<h3>Output Window</h3>
 
 
 
